@@ -67,3 +67,18 @@ time.sleep(3)
 this_pc()
 time.sleep(2)
 create_and_paste()
+'''
+os
+dbms
+cn
+sql
+oops 1
+oops 2
+react
+javascript
+projects
+puzzles
+html
+css
+github
+'''

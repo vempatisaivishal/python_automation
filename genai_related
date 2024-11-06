@@ -1,0 +1,35 @@
+import re
+
+def extract_blood_pressure(text):
+    # Define a list of possible blood pressure patterns
+    patterns = [
+        r"BP:\s*(\d+)/(\d+)",
+        r"[Bb][Pp]:\s*(\d+)/(\d+)",
+        r"blood\s+pressure:\s*(\d+)/(\d+)",
+        r"(\d+)/(\d+)\s+[Mm][Mm][Hh][Gg]"
+    ]
+
+    for pattern in patterns:
+        match = re.search(pattern, text)
+        if match:
+            systolic = match.group(1)
+            diastolic = match.group(2)
+            return int(systolic), int(diastolic)
+
+    # No match found
+    return None, None
+
+# Sample texts
+texts = [
+    "BP:    120/80",
+    "bP: 130/85",
+    "Blood pressure: 125/75 mmHg",
+    "140/90 mmHg"
+]
+
+for text in texts:
+    systolic, diastolic = extract_blood_pressure(text)
+    if systolic is not None and diastolic is not None:
+        print(f"Systolic: {systolic}, Diastolic: {diastolic}")
+    else:
+        print("No blood pressure information found.")

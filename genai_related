@@ -6,7 +6,8 @@ def extract_blood_pressure(text):
         r"BP:\s*(\d+)/(\d+)",
         r"[Bb][Pp]:\s*(\d+)/(\d+)",
         r"blood\s+pressure:\s*(\d+)/(\d+)",
-        r"(\d+)/(\d+)\s+[Mm][Mm][Hh][Gg]"
+        r"(\d+)/(\d+)\s+[Mm][Mm][Hh][Gg]",
+        r"[Bb][Pp]\s+(\d+)/(\d+)"
     ]
 
     for pattern in patterns:
@@ -24,7 +25,8 @@ texts = [
     "BP:    120/80",
     "bP: 130/85",
     "Blood pressure: 125/75 mmHg",
-    "140/90 mmHg"
+    "140/90 mmHg",
+    "BP 120/80"
 ]
 
 for text in texts:

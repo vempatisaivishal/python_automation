@@ -35,3 +35,47 @@ for text in texts:
         print(f"Systolic: {systolic}, Diastolic: {diastolic}")
     else:
         print("No blood pressure information found.")
+###############################################################################################
+
+import gensim.downloader as api
+from collections import defaultdict
+
+# Load the pre-trained Word2Vec model
+model = api.load("word2vec-google-news-300")
+
+def get_pregnancy_terms():
+    # You can load the pregnancy terms from a file, database, or generate them dynamically
+    # For this example, we'll use a simple list
+    return ["pregnancy", "prenatal", "postpartum", "gestation", "fetus", "placenta"]
+
+def extract_pregnancy_terms(text_file):
+    # Read the contents of the text file
+    with open(text_file, "r") as f:
+        text = f.read()
+
+    # Tokenize the text
+    tokens = text.split()
+
+    # Get the pregnancy-related terms
+    pregnancy_terms = get_pregnancy_terms()
+
+    # Extract similar terms using Word2Vec
+    similar_terms = defaultdict(list)
+    for term in pregnancy_terms:
+        try:
+            similar = model.most_similar(term, topn=5)
+            similar_terms[term] = [sim[0] for sim in similar]
+        except KeyError:
+           
+            similar_terms[term] = []
+
+   
+    all_pregnancy_terms = set(pregnancy_terms)
+    for terms in similar_terms.values():
+        all_pregnancy_terms.update(terms)
+
+    return all_pregnancy_terms
+
+
+pregnancy_terms = extract_pregnancy_terms("document.txt")
+print(pregnancy_terms)

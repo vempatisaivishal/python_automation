@@ -44,3 +44,25 @@ def click_medics():
 open_medics()
 time.sleep(2)
 click_medics()
+'''
+->OS
+->DBMS
+->CN
+->SQL->GFG
+->SQL->leetcode 50
+->puzzles->gfg
+->4 projects
+->c++->gfg
+->c++->stl
+->javascript
+->react
+->top 100 frontend questions
+->top 100 backend questions
+->top 100 ml questions
+->dsa neetcode 150
+->hackathons won projects
+->azure 28 videos
+->java oops, python oops, c++ oops
+->software engineering pdf
+
+'''
